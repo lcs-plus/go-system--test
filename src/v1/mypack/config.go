@@ -1,18 +1,15 @@
 package mypack
 
 import (
-	"fmt"
-	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
-
-var mysql_host string = "127.0.0.1"
-var mysql_user string = "root"
-var mysql_pwd string = "root"
-var mysql_port int = 3306
-
-
+var Mysql_host string = "127.0.0.1"
+var Mysql_user string = "root"
+var Mysql_pwd string = "root"
+var Mysql_port string = "3306"
+var Mysql_db string = "yingbei"
+var Mysql_charset string = "utf8"
 
 type Auth struct {
 	Username string `json:"username"`
@@ -25,45 +22,62 @@ type Resp struct {
 }
 
 type OrderXml struct {
-	dataId             string
-	orderType          string
-	orderNo            string
-	batchNumbers       string
-	ebpCode            string
-	ebpName            string
-	ebcCode            string
-	ebcName            string
-	bwsNo              string
-	customsCode        int
-	portCode           int
-	buyerRegNo         string
-	buyerName          string
-	buyerIdNumber      string
-	buyerTelephone     string
-	consignee          string
-	consigneeTelephone string
-	consigneeAddress   string
-	insuredFee         int
-	freight            float32
-	discount           float32
-	taxTotal           float32
-	currency           int
-	grossWeight        float32
-	netWeight          float32
-	note               string
+	DataId             string
+	OrderType          string
+	OrderNo            string
+	BatchNumbers       string
+	EbpCode            string
+	EbpName            string
+	EbcCode            string
+	EbcName            string
+	BwsNo              string
+	CustomsCode        int
+	PortCode           int
+	BuyerRegNo         string
+	BuyerName          string
+	BuyerIdNumber      string
+	BuyerTelephone     string
+	Consignee          string
+	ConsigneeTelephone string
+	ConsigneeAddress   string
+	InsuredFee         int
+	Freight            float32
+	Discount           float32
+	TaxTotal           float32
+	Currency           int
+	GrossWeight        float32
+	NetWeight          float32
+	Note               string
 }
 
-func CheckError(err error) {
+type OrderInfoClass struct {
+	OrderId              string  `db:"order_id"`
+	SubOrderNo           string  `db:"sub_order_no"`
+	OuterSkuId           string  `db:"outer_sku_id"`
+	CustomsCode          string  `db:"customs_code"`
+	Num                  int     `db:"num"`
+	FenxiaoPrice         float32 `db:"fenxiao_price"`
+	CrossBorderTradeMode string  `db:"cross_border_trade_mode"`
+	Payment              float32 `db:"payment"`
+	DiscountPrice        float32 `db:"discount_price"`
+	FenxiaoPayment       float32 `db:"fenxiao_payment"`
+	TotalFee             float32 `db:"total_fee"`
+	TaxTotal             float32 `db:"tax_total"`
+	Freight              float32 `db:"freight"`
+	FenxiaoTaxTotal      float32 `db:"fenxiao_tax_total"`
+	FenxiaoFreight       float32 `db:"fenxiao_freight"`
+	FenxiaoDiscount      float32 `db:"fenxiao_discount"`
+	Discount             float32 `db:"discount"`
 
-	if err != nil {
-		//log.Fatal(err)
-		fmt.Println(err)
-	}
-
-}
-
-func MySqlQueryOne()  {
-
-
-
+	Unit          int     `db:"unit"`
+	RoughWeight   float32 `db:"rough_weight"`
+	NetWeight     float32 `db:"net_weight"`
+	Country       int     `db:"country"`
+	Specification string  `db:"specification"`
+	ShopName      string  `db:"shop_name"`
+	Numed         string  `db:"numed"`
+	ShopCode      string  `db:"shop_code"`
+	United        string  `db:"united"`
+	Numeder       string  `db:"numeder"`
+	Uniteder      string  `db:"uniteder"`
 }
